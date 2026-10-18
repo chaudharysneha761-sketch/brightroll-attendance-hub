@@ -25,7 +25,7 @@ function Reports() {
   const [subjectId, setSubjectId] = useState(0);
   const [lowOnly, setLowOnly] = useState(false);
   useEffect(() => {
-    if (!subjectId && subjects.data?.length) setSubjectId(subjects.data[0].id);
+    if (!subjectId && subjects.data?.length) setSubjectId(subjects.data[0]!.id);
   }, [subjects.data, subjectId]);
   const report = useQuery(reportQuery(subjectId));
 

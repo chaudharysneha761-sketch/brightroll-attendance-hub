@@ -45,8 +45,8 @@ function mockReport(subjectId: number): ReportRow[] {
   const d = mock();
   const ids = d.sessions.filter((s) => s.subjectId === subjectId && d.attendance[s.id]).map((s) => s.id);
   return d.students.map((st) => {
-    const present = ids.filter((id) => d.attendance[id][st.id] === "present").length;
-    const total = ids.filter((id) => d.attendance[id][st.id]).length;
+    const present = ids.filter((id) => d.attendance[id]?.[st.id] === "present").length;
+    const total = ids.filter((id) => d.attendance[id]?.[st.id]).length;
     return {
       studentId: st.id,
       rollNo: st.rollNo,

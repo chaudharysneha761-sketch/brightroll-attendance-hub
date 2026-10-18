@@ -42,7 +42,7 @@ function MarkAttendance() {
     mutationFn: () =>
       api.submitAttendance({
         sessionId,
-        records: (students.data ?? []).map((s) => ({ studentId: s.id, status: marks[s.id] })),
+        records: (students.data ?? []).map((s) => ({ studentId: s.id, status: marks[s.id] ?? "absent" })),
       }),
     onSuccess: () => {
       toast.success("Attendance saved");
