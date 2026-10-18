@@ -7,11 +7,11 @@ export function createMockDb() {
     ["CS104", "Ananya Iyer"], ["CS105", "Kabir Singh"], ["CS106", "Isha Reddy"],
     ["CS107", "Vivaan Gupta"], ["CS108", "Meera Nair"], ["CS109", "Arjun Rao"],
     ["CS110", "Saanvi Joshi"], ["CS111", "Aditya Kumar"], ["CS112", "Priya Verma"],
-  ].map(([rollNo, name], i) => ({
+  ].map(([rollNo, name]: string[], i) => ({
+    rollNo: rollNo as string,
+    name: name as string,
     id: i + 1,
-    rollNo,
-    name,
-    email: `${name.split(" ")[0].toLowerCase()}@college.edu`,
+    email: `${(name as string).split(" ")[0]!.toLowerCase()}@college.edu`,
     department: "Computer Science",
   }));
 
@@ -33,9 +33,9 @@ export function createMockDb() {
   // attendance[sessionId][studentId] = status (deterministic sample pattern)
   const attendance: Record<number, Record<number, AttendanceStatus>> = {};
   for (const s of sessions.slice(0, 5)) {
-    attendance[s.id] = {};
+    const rec: Record<number, AttendanceStatus> = (attendance[s.id] = {});
     for (const st of students) {
-      attendance[s.id][st.id] = (st.id * 7 + s.id * 3) % 10 < 2 + (st.id % 4 === 0 ? 3 : 0) ? "absent" : "present";
+      rec[st.id] = (st.id * 7 + s.id * 3) % 10 < 2 + (st.id % 4 === 0 ? 3 : 0) ? "absent" : "present";
     }
   }
 
