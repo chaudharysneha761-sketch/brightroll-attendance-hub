@@ -27,7 +27,7 @@ function Students() {
 
   return (
     <>
-      <PageHeader title="Students" subtitle={q.data ? `${q.data.length} enrolled` : undefined} />
+      <PageHeader title="Students" subtitle={q.data ? `${q.data.length} enrolled` : ""} />
       <Panel>
         <div className="border-b p-4">
           <div className="relative max-w-sm">

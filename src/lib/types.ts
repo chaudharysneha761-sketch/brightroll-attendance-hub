@@ -19,7 +19,7 @@ export interface Session {
   date: string; // YYYY-MM-DD
   startTime: string; // HH:MM
   endTime: string;
-  topic?: string;
+  topic?: string | undefined;
 }
 
 export type AttendanceStatus = "present" | "absent";
@@ -34,7 +34,7 @@ export interface NewSessionPayload {
   date: string;
   startTime: string;
   endTime: string;
-  topic?: string;
+  topic?: string | undefined;
 }
 
 export interface ReportRow {
